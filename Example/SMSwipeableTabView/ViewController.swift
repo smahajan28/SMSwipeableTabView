@@ -32,6 +32,8 @@ class ViewController: UIViewController, SMSwipeableTabViewControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: SMSwipeableTabViewControllerDelegate CallBack
+    
     func didLoadViewControllerAtIndex(index: Int) -> UIViewController {
         let listVC = SMSimpleListViewController()
         listVC.dataSource = viewControllerDataSourceCollection[index]

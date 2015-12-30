@@ -35,7 +35,7 @@ public class SMSwipeableTabViewController: UIViewController, UIPageViewControlle
 
     public var buttonAttributes: [String : AnyObject]?
     public var segmentBarAttributes: [String : AnyObject]?
-    public var selectionAttributes: [String : AnyObject]?
+    public var selectionBarAttributes: [String : AnyObject]?
 
     public var delegate: SMSwipeableTabViewControllerDelegate?
     
@@ -170,7 +170,7 @@ public class SMSwipeableTabViewController: UIViewController, UIPageViewControlle
         setupSelectionBarFrame(0)
         
         selectionBar.backgroundColor = defaultSelectionBarBgColor
-        if let attributes = buttonAttributes {
+        if let attributes = selectionBarAttributes {
             if let bgColor = attributes[SMBackgroundColorAttribute] as? UIColor {
                 selectionBar.backgroundColor = bgColor
             }
