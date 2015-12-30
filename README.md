@@ -5,15 +5,18 @@
 [![License](https://img.shields.io/cocoapods/l/SMSwipeableTabView.svg?style=flat)](http://cocoapods.org/pods/SMSwipeableTabView)
 [![Platform](https://img.shields.io/cocoapods/p/SMSwipeableTabView.svg?style=flat)](http://cocoapods.org/pods/SMSwipeableTabView)
 
+SMSwipeableTabView is a custom control which is mixture of UIPageViewController and Scrollable Tab Bar. This is similar to Swipe view with tabs alyout in android. Any number of tabs can be added along with the swipeable views. User can fully customize the control.
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
 
+This library works with iOS version __8.0 and above__. It is written in __Swift__.
+
 ## Demo: 
 (Without Customization)
-
 
 ![demo](http://i.imgur.com/fOsNdck.gif)
 
@@ -25,8 +28,10 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "SMSwipeableTabView"
 ```
+
 ## How to use 
-(check out the provided Example):
+
+(check out the provided Example)
 
 We need to add the following code in the viewController where we need to implement this control.
 
@@ -38,7 +43,7 @@ swipeableView.titleBarDataSource = titleBarDataSource //Array of Button Titles l
 swipeableView.delegate = self
 
 //Set the View Frame (64.0 is 44.0(NavigationBar Height) + 20.0(StatusBar Height))
-swipeableView.view.frame = CGRectMake(0.0, 64.0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height-64.0)
+swipeableView.viewFrame = CGRectMake(0.0, 64.0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height-64.0)
 
 //Then add the view controller on the current view.
 self.addChildViewController(swipeableView)
@@ -59,6 +64,7 @@ func didLoadViewControllerAtIndex(index: Int) -> UIViewController {
     return listVC
 }
 ```
+
 ## Customization 
 
 We can customize each and every control in this view. Just pass a dictionary with required fields.
