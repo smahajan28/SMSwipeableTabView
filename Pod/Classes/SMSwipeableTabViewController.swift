@@ -13,8 +13,8 @@ public let SMForegroundColorAttribute = "kForegroundColorAttribute" // Set UICol
 public let SMBackgroundColorAttribute = "kBackgroundColorAttribute" // Set UIColor instance
 public let SMAlphaAttribute = "kAlphaAttribute" // Set CGFloat value
 public let SMBackgroundImageAttribute = "kBackgroundImageAttribute" // Set UIImage instance
-public let SMButtonNormalImageAttribute = "kButtonNormalImageAttribute" // Set UIImage instance
-public let SMButtonHighlightedImageAttribute = "kButtonHighlightedImageAttribute" // Set UIImage instance
+public let SMButtonNormalImagesAttribute = "kButtonNormalImageAttribute" // Set UIImage instance
+public let SMButtonHighlightedImagesAttribute = "kButtonHighlightedImageAttribute" // Set UIImage instance
 public let SMButtonHideTitleAttribute = "kButtonShowTitleAttribute" // Set Bool instance
 
 public protocol SMSwipeableTabViewControllerDelegate {
@@ -41,6 +41,9 @@ public class SMSwipeableTabViewController: UIViewController, UIPageViewControlle
     
     private var pageViewController: UIPageViewController?
     
+    //View Frame
+    public var viewFrame : CGRect?
+    
     //For Top Segment Bar
     //Array of Segment Bar Buttons (Text need to display)
     public var titleBarDataSource: [String]?
@@ -55,6 +58,10 @@ public class SMSwipeableTabViewController: UIViewController, UIPageViewControlle
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let frame = viewFrame {
+            self.view.frame = frame
+        }
         
         self.pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         if let startingViewController = viewControllerAtIndex(0) {
@@ -129,16 +136,17 @@ public class SMSwipeableTabViewController: UIViewController, UIPageViewControlle
                         segmentButton.setBackgroundImage(bgImage, forState: .Normal)
                     }
                     
-                    if let normalImage = attributes[SMButtonNormalImageAttribute] as? UIImage {
-                        segmentButton.setImage(normalImage, forState: .Normal)
+                    if let normalImages = attributes[SMButtonNormalImagesAttribute] as? [String] {
+                        segmentButton.setImage(UIImage(named: normalImages[i]), forState: .Normal)
                     }
                     
-                    if let highlightedImage = attributes[SMButtonHighlightedImageAttribute] as? UIImage {
-                        segmentButton.setImage(highlightedImage, forState: .Selected)
+                    if let highlightedImages = attributes[SMButtonHighlightedImagesAttribute] as? [String] {
+                        segmentButton.setImage(UIImage(named: highlightedImages[i]), forState: .Selected)
                     }
                     
                     if let hideTitle = attributes[SMButtonHideTitleAttribute] as? Bool where hideTitle == true{
                         segmentButton.titleLabel?.hidden = true
+                        segmentButton.setTitle("", forState: .Normal)
                     }
                     else{
                         segmentButton.titleLabel?.hidden = false
@@ -274,6 +282,5 @@ public class SMSwipeableTabViewController: UIViewController, UIPageViewControlle
         let xFromCenter:CGFloat = self.view.frame.size.width-scrollView.contentOffset.x
         let xCoor = buttonsFrameArray[currentPageIndex].origin.x;
         selectionBar.frame = CGRectMake(xCoor-xFromCenter/CGFloat(titleBarDataSource?.count ?? 0), selectionBar.frame.origin.y, buttonsFrameArray[currentPageIndex].size.width, selectionBar.frame.size.height)
-//        setupSelectionBarFrame(currentPageIndex)
     }
 }
