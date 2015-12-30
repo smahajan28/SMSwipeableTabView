@@ -13,7 +13,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Demo: 
 (Without Customization)
-![demo](http://i.imgur.com/fOsNdck.gifv)
+![demo](http://i.imgur.com/fOsNdck.gif)
 
 ## Installation
 
