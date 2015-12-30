@@ -11,6 +11,10 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+## Demo: 
+(Without Customization)
+![demo](http://i.imgur.com/fOsNdck.gifv)
+
 ## Installation
 
 SMSwipeableTabView is available through [CocoaPods](http://cocoapods.org). To install
@@ -19,6 +23,9 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "SMSwipeableTabView"
 ```
+## how to use 
+
+
 
 ## Author
 
