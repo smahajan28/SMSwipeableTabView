@@ -1,0 +1,6 @@
+framework module SMSwipeableTabView {
+  umbrella header "SMSwipeableTabView-umbrella.h"
+
+  export *
+  module * { export * }
+}

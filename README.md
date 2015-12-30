@@ -22,7 +22,7 @@ pod "SMSwipeableTabView"
 
 ## Author
 
-Sahil Mahajan, sahil.mahajan@goibibo.com
+Sahil Mahajan, sahilrameshmahajan@gmail.com
 
 ## License
 

@@ -1,0 +1,14 @@
+PODS:
+  - SMSwipeableTabView (0.1.0)
+
+DEPENDENCIES:
+  - SMSwipeableTabView (from `../`)
+
+EXTERNAL SOURCES:
+  SMSwipeableTabView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SMSwipeableTabView: 319f7933477130c1c777b8b33ce272a4226f316c
+
+COCOAPODS: 0.39.0
