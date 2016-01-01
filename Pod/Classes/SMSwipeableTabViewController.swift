@@ -8,14 +8,39 @@
 
 import UIKit
 
-public let SMFontAttribute = "kFontAttribute" // Set UIFont insatance
-public let SMForegroundColorAttribute = "kForegroundColorAttribute" // Set UIColor instance
-public let SMBackgroundColorAttribute = "kBackgroundColorAttribute" // Set UIColor instance
-public let SMAlphaAttribute = "kAlphaAttribute" // Set CGFloat value
-public let SMBackgroundImageAttribute = "kBackgroundImageAttribute" // Set UIImage instance
-public let SMButtonNormalImagesAttribute = "kButtonNormalImageAttribute" // Set UIImage instance
-public let SMButtonHighlightedImagesAttribute = "kButtonHighlightedImageAttribute" // Set UIImage instance
+
+/// Attribute Dictionary Keys. These keys are used to customize the UI elements of View.
+
+/**
+Take UIFont as value. Set font of Tab button titleLabel Font.
+*/
+public let SMFontAttribute = "kFontAttribute"
+
+/**
+Take UIColor as value. Set color of Tab button titleLabel Font.
+*/
+public let SMForegroundColorAttribute = "kForegroundColorAttribute"
+
+/**
+Take UIColor as value. Set background color of any View.
+*/
+public let SMBackgroundColorAttribute = "kBackgroundColorAttribute"
+
+/// Take CGFlaot as value. Set alpha of any View.
+public let SMAlphaAttribute = "kAlphaAttribute"
+
+/// Take UIImage as value. Set image of any View.
+public let SMBackgroundImageAttribute = "kBackgroundImageAttribute"
+
+/// Take Array of Strings(image_name) as value. Set button image for normal state.
+public let SMButtonNormalImagesAttribute = "kButtonNormalImageAttribute"
+
+/// Take Array of Strings(image_name) as value. Set button image for highlighted state.
+public let SMButtonHighlightedImagesAttribute = "kButtonHighlightedImageAttribute"
+
+/// Take Bool as value. Set title label of tab bar button hidden.
 public let SMButtonHideTitleAttribute = "kButtonShowTitleAttribute" // Set Bool instance
+
 
 public protocol SMSwipeableTabViewControllerDelegate {
     func didLoadViewControllerAtIndex(index: Int) -> UIViewController
@@ -23,30 +48,72 @@ public protocol SMSwipeableTabViewControllerDelegate {
 
 public class SMSwipeableTabViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
     
-    
+    /// To set the height of segment bar(Top swipable tab bar).
     public var segementBarHeight: CGFloat = 44.0
-    public var buttonPadding: CGFloat = 8.0
-    public var buttonWidth: CGFloat?
-    public var selectionBarHeight: CGFloat = 4.0
-    private let contentSizeOffset: CGFloat = 10.0
     
+    /// To set the margin beteen the buttons or tabs in the scrollable tab bar
+    public var buttonPadding: CGFloat = 8.0
+    
+    /// To set the fixed width of the button/tab in the tab bar
+    public var buttonWidth: CGFloat?
+    
+    /** To set the height of the selection bar
+        Selection bar can be seen under the tab
+    */
+    public var selectionBarHeight: CGFloat = 4.0
+    
+    /** To set the background color of the tab bar.
+        Default color is blue color. You can change the color as per your need.
+    */
     public let defaultSegmentBarBgColor = UIColor.blueColor()
+    
+    /** To set the background color of the selection bar.
+        Default color is red color. You can change the color as per your need.
+    */
     public let defaultSelectionBarBgColor = UIColor.redColor()
 
+    ///Dictionary to set button attributes. User can change the titleFont, titleFontColor, Normal Image, Selected Image etc.
+    /**
+    - Usage:
+    buttonAttributes = [
+                            SMBackgroundColorAttribute : UIColor.clearColor(),
+                            SMAlphaAttribute : 0.8,
+                            SMButtonHideTitleAttribute : true,
+                            SMButtonNormalImagesAttribute :["image_name1", "image_name2"] as [String]),
+                            SMButtonHighlightedImagesAttribute : ["high_image_name1", "high_image_name2"] as [String])
+                        ]
+    */
     public var buttonAttributes: [String : AnyObject]?
+    
+    ///Dictionary to set tab bar attributes. User can change the titleFont, titleFontColor, Normal Image, Selected Image etc.
+    /**
+    - Usage:
+    segmentBarAttributes = [
+                                SMBackgroundColorAttribute : UIColor.greenColor(),
+                            ]
+    */
     public var segmentBarAttributes: [String : AnyObject]?
+    
+    ///Dictionary to selection bar attributes. User can change the titleFont, titleFontColor, Normal Image, Selected Image etc.
+    /**
+    - Usage:
+    segmentBarAttributes = [
+                                SMBackgroundColorAttribute : UIColor.greenColor(),
+                                SMAlphaAttribute : 0.8 
+                            ]
+    */
     public var selectionBarAttributes: [String : AnyObject]?
 
+    /// To set the frame of the view.
+    public var viewFrame : CGRect?
+    
+    /// Array of tab Bar Buttons (Text need to display)
+    public var titleBarDataSource: [String]?
+    
+    /// Delegate of viewController. Set the delegate to load the viewController at new index.
     public var delegate: SMSwipeableTabViewControllerDelegate?
     
     private var pageViewController: UIPageViewController?
-    
-    //View Frame
-    public var viewFrame : CGRect?
-    
-    //For Top Segment Bar
-    //Array of Segment Bar Buttons (Text need to display)
-    public var titleBarDataSource: [String]?
     
     //Fixed
     private lazy var segmentBarView = UIScrollView()
@@ -54,6 +121,7 @@ public class SMSwipeableTabViewController: UIViewController, UIPageViewControlle
     
     private var buttonsFrameArray = [CGRect]()
     private var currentPageIndex = 0
+    private let contentSizeOffset: CGFloat = 10.0
     private var pageScrollView: UIScrollView?
     
     override public func viewDidLoad() {
@@ -265,7 +333,7 @@ public class SMSwipeableTabViewController: UIViewController, UIPageViewControlle
         }
     }
     
-    //MARK : Segment Button
+    //MARK : Segment Button Action
     func didSegmentButtonTap(sender: UIButton) {
         let tempIndex = currentPageIndex
         if sender.tag == tempIndex { return }
@@ -278,6 +346,7 @@ public class SMSwipeableTabViewController: UIViewController, UIPageViewControlle
         })
     }
     
+    //MARK : ScrollView Delegate Methods
     public func scrollViewDidScroll(scrollView: UIScrollView) {
         let xFromCenter:CGFloat = self.view.frame.size.width-scrollView.contentOffset.x
         let xCoor = buttonsFrameArray[currentPageIndex].origin.x;

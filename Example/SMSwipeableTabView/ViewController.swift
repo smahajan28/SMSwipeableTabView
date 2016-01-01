@@ -11,7 +11,7 @@ import SMSwipeableTabView
 
 class ViewController: UIViewController, SMSwipeableTabViewControllerDelegate {
     
-    let customize = true
+    let customize = false
     let showImageOnButton = true
     var viewControllerDataSourceCollection = [["Delhi", "Gurgaon", "Noida"], ["Mumbai", "Bandra", "Andheri", "Dadar"], ["Banglore", "Kormangala", "Marathalli"], ["Jalandhar", "Ludhiana", "Chandigarh", "Patiala", "Rajpura"], ["Shri GangaNagar", "Jodhpur", "Jaipur", "Kota", "Jaisalmer"]]
     
@@ -57,9 +57,6 @@ class ViewController: UIViewController, SMSwipeableTabViewControllerDelegate {
                 swipeableView.buttonPadding = 10.0 //Default is 8.0
                 swipeableView.buttonWidth = 50.0
             }
-            
-            
-            
         }
         
         self.addChildViewController(swipeableView)
