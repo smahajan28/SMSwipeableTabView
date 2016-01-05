@@ -69,12 +69,35 @@ class ViewController: UIViewController, SMSwipeableTabViewControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: SMSwipeableTabViewControllerDelegate CallBack
+    //MARK: SMSwipeableTabViewController Delegate CallBack
     
     func didLoadViewControllerAtIndex(index: Int) -> UIViewController {
-        let listVC = SMSimpleListViewController()
-        listVC.dataSource = viewControllerDataSourceCollection[index]
-        return listVC
+        switch index {
+        case 0:
+            let listVC = SMSimpleListViewController()
+            listVC.dataSource = viewControllerDataSourceCollection[index]
+            return listVC
+        case 1:
+            let vc = UIViewController()
+            vc.view.backgroundColor = UIColor.redColor()
+            return vc
+        case 2:
+            let listVC = SMSimpleListViewController()
+            listVC.dataSource = viewControllerDataSourceCollection[index]
+            return listVC
+        case 3:
+            let listVC = SMSimpleListViewController()
+            listVC.dataSource = viewControllerDataSourceCollection[index]
+            return listVC
+        case 5:
+            let vc = UIViewController()
+            vc.view.backgroundColor = UIColor.brownColor()
+            return vc
+        default:
+            let vc = UIViewController()
+            vc.view.backgroundColor = UIColor.greenColor()
+            return vc
+        }
     }
 }
 

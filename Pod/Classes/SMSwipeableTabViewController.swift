@@ -41,6 +41,8 @@ public let SMButtonHighlightedImagesAttribute = "kButtonHighlightedImageAttribut
 /// Take Bool as value. Set title label of tab bar button hidden.
 public let SMButtonHideTitleAttribute = "kButtonShowTitleAttribute" // Set Bool instance
 
+/// Swipe constant
+public let kSelectionBarSwipeConstant: CGFloat = 3.0
 
 public protocol SMSwipeableTabViewControllerDelegate {
     func didLoadViewControllerAtIndex(index: Int) -> UIViewController
@@ -350,6 +352,6 @@ public class SMSwipeableTabViewController: UIViewController, UIPageViewControlle
     public func scrollViewDidScroll(scrollView: UIScrollView) {
         let xFromCenter:CGFloat = self.view.frame.size.width-scrollView.contentOffset.x
         let xCoor = buttonsFrameArray[currentPageIndex].origin.x;
-        selectionBar.frame = CGRectMake(xCoor-xFromCenter/CGFloat(titleBarDataSource?.count ?? 0), selectionBar.frame.origin.y, buttonsFrameArray[currentPageIndex].size.width, selectionBar.frame.size.height)
+        selectionBar.frame = CGRectMake(xCoor-xFromCenter/kSelectionBarSwipeConstant, selectionBar.frame.origin.y, buttonsFrameArray[currentPageIndex].size.width, selectionBar.frame.size.height)
     }
 }
