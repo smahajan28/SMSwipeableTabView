@@ -12,7 +12,6 @@
 		2D52B23E745CB6B163768C1C6889975F /* Pods-SMSwipeableTabView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EC5BD5B7D8D950413B3FA7811CAFAA53 /* Pods-SMSwipeableTabView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62750E4653E5C6DE8250CF9084915A70 /* Pods-SMSwipeableTabView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A6453D6622C622B2C51C103EBC731A /* Pods-SMSwipeableTabView_Tests-dummy.m */; };
 		6D554A4DDA194BE4DBE10DE0E7302394 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		8DADEBB8FDD8F5985863BF0AFC194A08 /* SMSwipeableTabView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4CAC91FD3EFCAE71F8452EE80E8D9C34 /* SMSwipeableTabView.bundle */; };
 		BF354CB709185CB0760009F0D8F4D341 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		D57DA9D3E3C5CC5A277F13AA3DF355A3 /* SMSwipeableTabView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0F20B997CB3D11920BFFB456C7DDF9 /* SMSwipeableTabView-dummy.m */; };
 		E505B9893BA2EDA40B4D387657858870 /* SMSwipeableTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95CCED8ED0366024EA359E30089FF1 /* SMSwipeableTabViewController.swift */; };
@@ -27,13 +26,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 886273131905C7DBBFD573BC1FD8DC5D;
 			remoteInfo = SMSwipeableTabView;
-		};
-		74F118C1AFDDBC2D8A2BBEFDC5F6BFFD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A1DEB8B96F9CF5F5C58922F467132ED9;
-			remoteInfo = "SMSwipeableTabView-SMSwipeableTabView";
 		};
 		C8C998C4128C58DEA67A64BB173FE405 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -54,7 +46,6 @@
 		2DC15323C1180702A14A1BF8CF635552 /* Pods-SMSwipeableTabView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SMSwipeableTabView_Tests.modulemap"; sourceTree = "<group>"; };
 		39A6453D6622C622B2C51C103EBC731A /* Pods-SMSwipeableTabView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SMSwipeableTabView_Tests-dummy.m"; sourceTree = "<group>"; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		4CAC91FD3EFCAE71F8452EE80E8D9C34 /* SMSwipeableTabView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMSwipeableTabView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		731C1AE66B2917AF90E251A5910D3C6A /* Pods-SMSwipeableTabView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SMSwipeableTabView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7735886FCD16A25E250F8975770CD9DA /* Pods-SMSwipeableTabView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SMSwipeableTabView_Tests-resources.sh"; sourceTree = "<group>"; };
 		82696058F0F1A8262C4589DD75B048C0 /* Pods-SMSwipeableTabView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SMSwipeableTabView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -86,13 +77,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E823F13564DAF65D33591591B20B43E3 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1914CB92040C96215AE0658D5F73296A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +141,6 @@
 			children = (
 				CBBDCA26A064E591866FCBF44EF73686 /* Pods_SMSwipeableTabView_Example.framework */,
 				EAD08A8B4ADEAB8C6129AFE44574B806 /* Pods_SMSwipeableTabView_Tests.framework */,
-				4CAC91FD3EFCAE71F8452EE80E8D9C34 /* SMSwipeableTabView.bundle */,
 				CAC04F648CECD8E94E546C1E335AFB0C /* SMSwipeableTabView.framework */,
 			);
 			name = Products;
@@ -306,7 +289,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				0CCE64382E1CEAD9F7F82A04FF6420B4 /* PBXTargetDependency */,
 			);
 			name = SMSwipeableTabView;
 			productName = SMSwipeableTabView;
@@ -331,23 +313,6 @@
 			productReference = EAD08A8B4ADEAB8C6129AFE44574B806 /* Pods_SMSwipeableTabView_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A1DEB8B96F9CF5F5C58922F467132ED9 /* SMSwipeableTabView-SMSwipeableTabView */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0507B48F3E5FAB8E29C0AD90B8582278 /* Build configuration list for PBXNativeTarget "SMSwipeableTabView-SMSwipeableTabView" */;
-			buildPhases = (
-				04BE502B539F8D352C7F3FB680036F7B /* Sources */,
-				1914CB92040C96215AE0658D5F73296A /* Frameworks */,
-				A8649D7A271767B63D980487F26E5F27 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "SMSwipeableTabView-SMSwipeableTabView";
-			productName = "SMSwipeableTabView-SMSwipeableTabView";
-			productReference = 4CAC91FD3EFCAE71F8452EE80E8D9C34 /* SMSwipeableTabView.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -356,6 +321,17 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					6560C6AEFD89BF786CACA2204A9405FF = {
+						LastSwiftMigration = 0820;
+					};
+					886273131905C7DBBFD573BC1FD8DC5D = {
+						LastSwiftMigration = 0820;
+					};
+					995C32D1801DDD6B54A99799E0AE97AA = {
+						LastSwiftMigration = 0820;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -372,37 +348,21 @@
 				6560C6AEFD89BF786CACA2204A9405FF /* Pods-SMSwipeableTabView_Example */,
 				995C32D1801DDD6B54A99799E0AE97AA /* Pods-SMSwipeableTabView_Tests */,
 				886273131905C7DBBFD573BC1FD8DC5D /* SMSwipeableTabView */,
-				A1DEB8B96F9CF5F5C58922F467132ED9 /* SMSwipeableTabView-SMSwipeableTabView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A8649D7A271767B63D980487F26E5F27 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FE20950D133277D0CC70C1F98ED13060 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DADEBB8FDD8F5985863BF0AFC194A08 /* SMSwipeableTabView.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		04BE502B539F8D352C7F3FB680036F7B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0952C48A48DA16FCEDCAFF3E85F0FE18 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -431,12 +391,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0CCE64382E1CEAD9F7F82A04FF6420B4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "SMSwipeableTabView-SMSwipeableTabView";
-			target = A1DEB8B96F9CF5F5C58922F467132ED9 /* SMSwipeableTabView-SMSwipeableTabView */;
-			targetProxy = 74F118C1AFDDBC2D8A2BBEFDC5F6BFFD /* PBXContainerItemProxy */;
-		};
 		897B7D764245B28070F1A1679C6D7347 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SMSwipeableTabView;
@@ -476,6 +430,7 @@
 				PRODUCT_NAME = Pods_SMSwipeableTabView_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -511,20 +466,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_VERSION = 3.0;
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		1A2A49D5F6F5630A0209E7ED30F9F135 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D37F7961ACDF3BEC65AE5907C39CD8BD /* SMSwipeableTabView.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = SMSwipeableTabView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -553,6 +497,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -584,6 +529,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -625,6 +571,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_VERSION = 3.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
@@ -653,6 +600,7 @@
 				PRODUCT_NAME = Pods_SMSwipeableTabView_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -680,23 +628,12 @@
 				PRODUCT_NAME = SMSwipeableTabView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		8E6FDDF9FDE532091EFFDD9844D1F36C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D37F7961ACDF3BEC65AE5907C39CD8BD /* SMSwipeableTabView.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = SMSwipeableTabView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
 		};
 		A5FFE5E9C350276D40DBDF90C01ED1A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -720,6 +657,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -729,15 +667,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0507B48F3E5FAB8E29C0AD90B8582278 /* Build configuration list for PBXNativeTarget "SMSwipeableTabView-SMSwipeableTabView" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8E6FDDF9FDE532091EFFDD9844D1F36C /* Debug */,
-				1A2A49D5F6F5630A0209E7ED30F9F135 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

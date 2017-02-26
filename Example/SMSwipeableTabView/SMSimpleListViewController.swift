@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class SMSimpleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+open class SMSimpleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var dataSource: [AnyObject]?
     var pageIndex = 0
@@ -16,9 +16,9 @@ public class SMSimpleListViewController: UIViewController, UITableViewDataSource
     
     @IBOutlet var mainTableView: UITableView!
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
-        mainTableView = UITableView(frame: UIScreen.mainScreen().bounds, style: UITableViewStyle.Plain)
+        mainTableView = UITableView(frame: UIScreen.main.bounds, style: UITableViewStyle.plain)
         
         mainTableView.delegate = self
         mainTableView.dataSource = self
@@ -27,24 +27,24 @@ public class SMSimpleListViewController: UIViewController, UITableViewDataSource
         mainTableView?.reloadData()
     }
 
-    public override func didReceiveMemoryWarning() {
+    open override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource?.count ?? 0
     }
 
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("CellIdentifier")
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier")
         if cell == nil{
-            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "CellIdentifier")
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "CellIdentifier")
         }
         if let data = dataSource {
             cell!.textLabel?.text = data[indexPath.row] as? String

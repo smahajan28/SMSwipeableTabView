@@ -17,7 +17,7 @@ s.homepage         = "https://github.com/smahajan28/SMSwipeableTabView"
 s.license          = 'MIT'
 s.author           = { "Sahil Mahajan" => "sahilrameshmahajan@gmail.com" }
 s.source           = { :git => "https://github.com/smahajan28/SMSwipeableTabView.git", :tag => s.version.to_s }
-s.platform         = :ios, '7.0'
+s.platform         = :ios, '8.0'
 s.requires_arc     = true
 
 s.source_files     = 'Pod/Classes/**/*'

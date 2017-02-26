@@ -59,7 +59,7 @@ swipeableView.titleBarDataSource = titleBarDataSource //Array of Button Titles l
 swipeableView.delegate = self
 
 //Set the View Frame (64.0 is 44.0(NavigationBar Height) + 20.0(StatusBar Height))
-swipeableView.viewFrame = CGRectMake(0.0, 64.0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height-64.0)
+swipeableView.viewFrame = CGRect(x: 0.0, y: 64.0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height-64.0)
 
 //Then add the view controller on the current view.
 self.addChildViewController(swipeableView)
@@ -75,7 +75,7 @@ Whenever you click on any segment button or swipe the page on the controller. De
 func didLoadViewControllerAtIndex(index: Int) -> UIViewController {
     //We can implement switch case with the index Parameter and load new controller at every new index. Or we can load the same list view with different datasource.
     let listVC = UIViewController()
-    listVC.backgroundColor = UIColor.redColor()
+    listVC.backgroundColor = UIColor.red
     listVC.dataSource = anyArray[index] // This will be an array of arrays or we need to set our dataSource of every different controller.
     return listVC
 }
@@ -90,14 +90,14 @@ NOTE: Set the frame of swipeableViewController after setting all the attributes.
 e.g.:
 If you want to change the background color of the top bar, just add the following code:
 ```swift
-swipeableView.segmentBarAttributes = [SMBackgroundColorAttribute : UIColor.lightGrayColor()]
+swipeableView.segmentBarAttributes = [SMBackgroundColorAttribute : UIColor.lightGray]
 
 ```
 
 If you want to change the background color of the selection bar(Bar display under the segment button) and set Alpha of the selection bar, just add the following code:
 ```swift
 swipeableView.selectionBarAttributes = [
-                                        SMBackgroundColorAttribute : UIColor.greenColor(), 
+                                        SMBackgroundColorAttribute : UIColor.green, 
                                         SMAlphaAttribute : 0.8
                                         ]
 
@@ -107,7 +107,7 @@ Also you can update the segment Button, just add attributes for button:
 ```swift
 // Setting Font And BackgroundColor of Button
 swipeableView.buttonAttributes = [
-                                    SMBackgroundColorAttribute : UIColor.greenColor(), 
+                                    SMBackgroundColorAttribute : UIColor.green, 
                                     SMAlphaAttribute : 0.8,
                                     SMFontAttribute : UIFont(name: "HelveticaNeue-Medium", size: 13.0)
                                  ]
@@ -119,7 +119,7 @@ if you want to add images instead of Title in buttons, you can easily set Normal
 // Setting Font And BackgroundColor of Button
 // Here for Normal and Highlighted Images we need to send the imageName array
 swipeableView.buttonAttributes = [
-                                    SMBackgroundColorAttribute : UIColor.clearColor(), 
+                                    SMBackgroundColorAttribute : UIColor.clear, 
                                     SMAlphaAttribute : 0.8,
                                     SMButtonHideTitleAttribute : true,
                                     SMButtonNormalImagesAttribute :["image_name1", "image_name2"] as [String]),
