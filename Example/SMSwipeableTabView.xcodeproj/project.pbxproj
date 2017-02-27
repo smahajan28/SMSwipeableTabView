@@ -268,7 +268,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = CocoaPods;
+				ORGANIZATIONNAME = "Sahil Mahajan";
 				TargetAttributes = {
 					3D3693891E645404007FFBF0 = {
 						CreatedOnToolsVersion = 8.2.1;
