@@ -38,8 +38,23 @@ target 'MyApp' do
 end
 ```
 
-####Carthage
+####Carthage (iOS 8+, OS X 10.9+)
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
 
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate SMSwipeableTabView into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "smahajan28/SMSwipeableTabView"
+```
+
+Run `carthage update` to build the framework and drag the built `SMSwipeableTabView.framework` into your Xcode project.
 
 ####Swift Package Manager
 
