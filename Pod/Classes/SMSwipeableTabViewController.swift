@@ -149,7 +149,7 @@ open class SMSwipeableTabViewController: UIViewController, UIPageViewControllerD
     open var viewFrame : CGRect?
     
     /// Array of tab Bar Buttons (Text need to display)
-    open var titleBarDataSource: [String]?
+    open var titleBarDataSource: [NSMutableAttributedString]?
     
     /// Delegate of viewController. Set the delegate to load the viewController at new index.
     open var delegate: SMSwipeableTabViewControllerDelegate?
@@ -258,10 +258,12 @@ open class SMSwipeableTabViewController: UIViewController, UIPageViewControllerD
                 let previousButtonX = i > 0 ? buttonsFrameArray[i-1].origin.x : 0.0
                 let previousButtonW = i > 0 ? buttonsFrameArray[i-1].size.width : 0.0
                 
-                let segmentButton = UIButton(frame: CGRect(x: previousButtonX + previousButtonW + buttonPadding, y: 0.0, width: getWidthForText(buttonList[i]) + buttonPadding, height: segementBarHeight))
+                let segmentButton = UIButton(frame: CGRect(x: previousButtonX + previousButtonW + buttonPadding, y: 0.0, width: getWidthForText(buttonList[i].string) + buttonPadding, height: segementBarHeight))
                 buttonsFrameArray.append(segmentButton.frame)
-                segmentButton.setTitle(buttonList[i], for: UIControlState())
                 segmentButton.tag = i
+                segmentButton.setAttributedTitle(buttonList[i], for: UIControlState())
+                segmentButton.titleLabel?.numberOfLines = 0
+                segmentButton.titleLabel?.textAlignment = .center
                 segmentButton.addTarget(self, action: #selector(SMSwipeableTabViewController.didSegmentButtonTap(_:)), for: .touchUpInside)
                 
                 if let attributes = buttonAttributes {
@@ -294,13 +296,19 @@ open class SMSwipeableTabViewController: UIViewController, UIPageViewControllerD
                     }
                     
                     if let foregroundColor = attributes[SMForegroundColorAttribute] as? UIColor, currentPageIndex == i{
-                        segmentButton.setTitleColor(foregroundColor, for: UIControlState())
+                        let arrayOfStrings = buttonList[i].string.components(separatedBy: CharacterSet.newlines)
+                        buttonList[i].addAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 10.0)!, NSForegroundColorAttributeName: foregroundColor], range: NSMakeRange(0,arrayOfStrings[0].characters.count))
+                        buttonList[i].addAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 13.0)!, NSForegroundColorAttributeName: UIColor.white], range: NSMakeRange(arrayOfStrings[0].characters.count,arrayOfStrings[1].characters.count+1))
                     }
                     else if let unSelectedForegroundColor = attributes[SMUnselectedColorAttribute] as? UIColor, currentPageIndex != i{
-                        segmentButton.setTitleColor(unSelectedForegroundColor, for: UIControlState())
+                        let arrayOfStrings = buttonList[i].string.components(separatedBy: CharacterSet.newlines)
+                        buttonList[i].addAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 10.0)!, NSForegroundColorAttributeName: unSelectedForegroundColor], range: NSMakeRange(0,arrayOfStrings[0].characters.count))
+                        buttonList[i].addAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 10.0)!, NSForegroundColorAttributeName: unSelectedForegroundColor], range: NSMakeRange(arrayOfStrings[0].characters.count,arrayOfStrings[1].characters.count+1))
                     }
                     else {
-                        segmentButton.setTitleColor(defaultUnSelectedButtonForegroundColor, for: UIControlState())
+                        let arrayOfStrings = buttonList[i].string.components(separatedBy: CharacterSet.newlines)
+                        buttonList[i].addAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 10.0)!, NSForegroundColorAttributeName: defaultUnSelectedButtonForegroundColor], range: NSMakeRange(0,arrayOfStrings[0].characters.count))
+                        buttonList[i].addAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 10.0)!, NSForegroundColorAttributeName: defaultUnSelectedButtonForegroundColor], range: NSMakeRange(arrayOfStrings[0].characters.count,arrayOfStrings[1].characters.count+1))
                     }
                     
                     if let alpha = attributes[SMAlphaAttribute] as? CGFloat {
@@ -363,20 +371,30 @@ open class SMSwipeableTabViewController: UIViewController, UIPageViewControllerD
         for button in segmentBarView.subviews {
             if button is UIButton{
                 if button.tag == currentPageIndex {
+                    let buttonText = NSMutableAttributedString(attributedString: (button as! UIButton).titleLabel!.attributedText!)
+                    let arrayOfStrings = buttonText.string.components(separatedBy: CharacterSet.newlines)
                     if let attributes = buttonAttributes, let foregroundColor = attributes[SMForegroundColorAttribute] as? UIColor{
-                        (button as! UIButton).setTitleColor(foregroundColor, for: UIControlState())
+                        buttonText.addAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 10.0)!, NSForegroundColorAttributeName: foregroundColor], range: NSMakeRange(0,arrayOfStrings[0].characters.count))
+                        buttonText.addAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 13.0)!, NSForegroundColorAttributeName: UIColor.white], range: NSMakeRange(arrayOfStrings[0].characters.count,arrayOfStrings[1].characters.count+1))
                     }
                     else {
-                        (button as! UIButton).setTitleColor(defaultSelectedButtonForegroundColor, for: UIControlState())
+                        buttonText.addAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 10.0)!, NSForegroundColorAttributeName: defaultSelectedButtonForegroundColor], range: NSMakeRange(0,arrayOfStrings[0].characters.count))
+                        buttonText.addAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 13.0)!, NSForegroundColorAttributeName: UIColor.white], range: NSMakeRange(arrayOfStrings[0].characters.count,arrayOfStrings[1].characters.count+1))
                     }
+                    (button as! UIButton).setAttributedTitle(buttonText, for: .normal)
                 }
                 else {
+                    let buttonText = NSMutableAttributedString(attributedString: (button as! UIButton).titleLabel!.attributedText!)
+                    let arrayOfStrings = buttonText.string.components(separatedBy: CharacterSet.newlines)
                     if let attributes = buttonAttributes, let unselectedForegroundColor = attributes[SMUnselectedColorAttribute] as? UIColor{
-                        (button as! UIButton).setTitleColor(unselectedForegroundColor, for: UIControlState())
+                        buttonText.addAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 10.0)!, NSForegroundColorAttributeName: unselectedForegroundColor], range: NSMakeRange(0,arrayOfStrings[0].characters.count))
+                        buttonText.addAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 10.0)!, NSForegroundColorAttributeName: unselectedForegroundColor], range: NSMakeRange(arrayOfStrings[0].characters.count,arrayOfStrings[1].characters.count+1))
                     }
                     else {
-                        (button as! UIButton).setTitleColor(defaultUnSelectedButtonForegroundColor, for: UIControlState())
+                        buttonText.addAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 10.0)!, NSForegroundColorAttributeName: defaultUnSelectedButtonForegroundColor], range: NSMakeRange(0,arrayOfStrings[0].characters.count))
+                        buttonText.addAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 10.0)!, NSForegroundColorAttributeName: defaultUnSelectedButtonForegroundColor], range: NSMakeRange(arrayOfStrings[0].characters.count,arrayOfStrings[1].characters.count+1))
                     }
+                    (button as! UIButton).setAttributedTitle(buttonText, for: .normal)
                 }
             }
         }
