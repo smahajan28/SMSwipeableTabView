@@ -96,22 +96,22 @@ open class SMSwipeableTabViewController: UIViewController, UIPageViewControllerD
     /** To set the background color of the tab bar.
      Default color is blue color. You can change the color as per your need.
      */
-    open let defaultSegmentBarBgColor = UIColor.blue
+    public let defaultSegmentBarBgColor = UIColor.blue
     
     /** To set the background color of the selection bar.
      Default color is red color. You can change the color as per your need.
      */
-    open let defaultSelectionBarBgColor = UIColor.red
+    public let defaultSelectionBarBgColor = UIColor.red
     
     /** To set the background color of the selection bar.
      Default color is red color. You can change the color as per your need.
      */
-    open let defaultSelectedButtonForegroundColor = UIColor.white
+    public let defaultSelectedButtonForegroundColor = UIColor.white
     
     /** To set the background color of the selection bar.
      Default color is red color. You can change the color as per your need.
      */
-    open let defaultUnSelectedButtonForegroundColor = UIColor.gray
+    public let defaultUnSelectedButtonForegroundColor = UIColor.gray
     
     ///Dictionary to set button attributes. User can change the titleFont, titleFontColor, Normal Image, Selected Image etc.
     /**
@@ -193,13 +193,13 @@ open class SMSwipeableTabViewController: UIViewController, UIPageViewControllerD
                 self.pageViewController!.setViewControllers(viewControllers, direction: .forward, animated: false, completion: {done in })
             }
             
-            self.addChildViewController(self.pageViewController!)
+            self.addChild(self.pageViewController!)
             self.view.addSubview(self.pageViewController!.view)
             
             let pageViewRect = CGRect(x: 0.0, y: segementBarHeight, width: self.view.frame.width, height: self.view.frame.height-segementBarHeight)
             self.pageViewController!.view.frame = pageViewRect
             
-            self.pageViewController!.didMove(toParentViewController: self)
+            self.pageViewController!.didMove(toParent: self)
             
             // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
             self.view.gestureRecognizers = self.pageViewController!.gestureRecognizers
@@ -260,7 +260,7 @@ open class SMSwipeableTabViewController: UIViewController, UIPageViewControllerD
                 
                 let segmentButton = UIButton(frame: CGRect(x: previousButtonX + previousButtonW + buttonPadding, y: 0.0, width: getWidthForText(buttonList[i]) + buttonPadding, height: segementBarHeight))
                 buttonsFrameArray.append(segmentButton.frame)
-                segmentButton.setTitle(buttonList[i], for: UIControlState())
+                segmentButton.setTitle(buttonList[i], for: UIControl.State())
                 segmentButton.tag = i
                 segmentButton.addTarget(self, action: #selector(SMSwipeableTabViewController.didSegmentButtonTap(_:)), for: .touchUpInside)
                 
@@ -270,11 +270,11 @@ open class SMSwipeableTabViewController: UIViewController, UIPageViewControllerD
                     }
                     
                     if let bgImage = attributes[SMBackgroundImageAttribute] as? UIImage {
-                        segmentButton.setBackgroundImage(bgImage, for: UIControlState())
+                        segmentButton.setBackgroundImage(bgImage, for: UIControl.State())
                     }
                     
                     if let normalImages = attributes[SMButtonNormalImagesAttribute] as? [String] {
-                        segmentButton.setImage(UIImage(named: normalImages[i]), for: UIControlState())
+                        segmentButton.setImage(UIImage(named: normalImages[i]), for: UIControl.State())
                     }
                     
                     if let highlightedImages = attributes[SMButtonHighlightedImagesAttribute] as? [String] {
@@ -283,7 +283,7 @@ open class SMSwipeableTabViewController: UIViewController, UIPageViewControllerD
                     
                     if let hideTitle = attributes[SMButtonHideTitleAttribute] as? Bool, hideTitle == true{
                         segmentButton.titleLabel?.isHidden = true
-                        segmentButton.setTitle("", for: UIControlState())
+                        segmentButton.setTitle("", for: UIControl.State())
                     }
                     else{
                         segmentButton.titleLabel?.isHidden = false
@@ -294,13 +294,13 @@ open class SMSwipeableTabViewController: UIViewController, UIPageViewControllerD
                     }
                     
                     if let foregroundColor = attributes[SMForegroundColorAttribute] as? UIColor, currentPageIndex == i{
-                        segmentButton.setTitleColor(foregroundColor, for: UIControlState())
+                        segmentButton.setTitleColor(foregroundColor, for: UIControl.State())
                     }
                     else if let unSelectedForegroundColor = attributes[SMUnselectedColorAttribute] as? UIColor, currentPageIndex != i{
-                        segmentButton.setTitleColor(unSelectedForegroundColor, for: UIControlState())
+                        segmentButton.setTitleColor(unSelectedForegroundColor, for: UIControl.State())
                     }
                     else {
-                        segmentButton.setTitleColor(defaultUnSelectedButtonForegroundColor, for: UIControlState())
+                        segmentButton.setTitleColor(defaultUnSelectedButtonForegroundColor, for: UIControl.State())
                     }
                     
                     if let alpha = attributes[SMAlphaAttribute] as? CGFloat {
@@ -308,7 +308,7 @@ open class SMSwipeableTabViewController: UIViewController, UIPageViewControllerD
                     }
                 }
                 else {
-                    segmentButton.setTitleColor(currentPageIndex == i ? defaultSelectedButtonForegroundColor : defaultUnSelectedButtonForegroundColor , for: UIControlState())
+                    segmentButton.setTitleColor(currentPageIndex == i ? defaultSelectedButtonForegroundColor : defaultUnSelectedButtonForegroundColor , for: UIControl.State())
                 }
                 
                 segmentBarView.addSubview(segmentButton)
@@ -356,7 +356,7 @@ open class SMSwipeableTabViewController: UIViewController, UIPageViewControllerD
     }
     
     fileprivate func getWidthForText(_ text: String) -> CGFloat {
-        return buttonWidth ?? ceil((text as NSString).size(attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0)]).width)
+        return buttonWidth ?? ceil((text as NSString).size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]).width)
     }
     
     fileprivate func updateButtonColorOnSelection() {
@@ -364,18 +364,18 @@ open class SMSwipeableTabViewController: UIViewController, UIPageViewControllerD
             if button is UIButton{
                 if button.tag == currentPageIndex {
                     if let attributes = buttonAttributes, let foregroundColor = attributes[SMForegroundColorAttribute] as? UIColor{
-                        (button as! UIButton).setTitleColor(foregroundColor, for: UIControlState())
+                        (button as! UIButton).setTitleColor(foregroundColor, for: UIControl.State())
                     }
                     else {
-                        (button as! UIButton).setTitleColor(defaultSelectedButtonForegroundColor, for: UIControlState())
+                        (button as! UIButton).setTitleColor(defaultSelectedButtonForegroundColor, for: UIControl.State())
                     }
                 }
                 else {
                     if let attributes = buttonAttributes, let unselectedForegroundColor = attributes[SMUnselectedColorAttribute] as? UIColor{
-                        (button as! UIButton).setTitleColor(unselectedForegroundColor, for: UIControlState())
+                        (button as! UIButton).setTitleColor(unselectedForegroundColor, for: UIControl.State())
                     }
                     else {
-                        (button as! UIButton).setTitleColor(defaultUnSelectedButtonForegroundColor, for: UIControlState())
+                        (button as! UIButton).setTitleColor(defaultUnSelectedButtonForegroundColor, for: UIControl.State())
                     }
                 }
             }
@@ -440,10 +440,10 @@ open class SMSwipeableTabViewController: UIViewController, UIPageViewControllerD
     }
     
     //MARK : Segment Button Action
-    func didSegmentButtonTap(_ sender: UIButton) {
+    @objc func didSegmentButtonTap(_ sender: UIButton) {
         let tempIndex = currentPageIndex
         if sender.tag == tempIndex { return }
-        let scrollDirection: UIPageViewControllerNavigationDirection = sender.tag > tempIndex ? .forward : .reverse
+        let scrollDirection: UIPageViewController.NavigationDirection = sender.tag > tempIndex ? .forward : .reverse
         pageViewController?.setViewControllers([viewControllerAtIndex(sender.tag)!], direction: scrollDirection, animated: true, completion: { (complete) -> Void in
             if complete {
                 self.currentPageIndex = sender.tag
